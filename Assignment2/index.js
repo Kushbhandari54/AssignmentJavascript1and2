@@ -65,22 +65,21 @@ function storeData() {
     let Phone = document.getElementById("mobile").value;
     let obj = { name: Name, email: Email, phone: Phone };
 
-    if (localStorage.info) { // if info stored previously in local data
-        let storedData = JSON.parse(localStorage.getItem("info")); // storedData is an array of obj
+    if (localStorage.info) { 
+        let storedData = JSON.parse(localStorage.getItem("info")); 
         storedData.push(obj);
         localStorage.setItem('info', JSON.stringify(storedData));
-    } else localStorage.setItem('info', JSON.stringify([obj])); // storing array for 1st time
+    } else localStorage.setItem('info', JSON.stringify([obj])); 
 
     updateTable();
 }
 
 function updateTable() {
-    if (localStorage.info) { // Execute only if localStorage exist
-        //Information to be inserted in the table
-        let info = JSON.parse(localStorage.getItem("info")); // info is an array of obj
+    if (localStorage.info) { 
+        let info = JSON.parse(localStorage.getItem("info")); 
         let table = document.getElementById("tableData");
         table.innerHTML = "";
-        document.getElementById("tableCaption").innerText = info.length + " entries found." // updating caption
+        document.getElementById("tableCaption").innerText = info.length + " entries found."
 
         for (let i = 0; i < info.length; i++) {
             let tableRow = document.createElement("tr");
